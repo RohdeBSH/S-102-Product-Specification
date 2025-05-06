@@ -6,15 +6,15 @@ This document specifies a set of checks that producers of S-102 Bathymetric Surf
 The checks listed in this document are product-specific. They supplement but do not replace the generic S-100 validation checks applicable to all S-100 products which are defined in a separate IHO publication (S-158:100 – Universal Hydrographic Model Validation Checks).
 
 === Scope
-This document, designated as “S-158:102” by the IHO, specifies validation checks for data products conforming to Edition(s) 3.0.x of the S-102 (Bathymetric Surface) Product Specification.
+This document, designated as “{:series:}-{158:102}” by the IHO, specifies validation checks for data products conforming to Edition(s) {s102-version-ref} of the S-102 (Bathymetric Surface) Product Specification.
 
 This document specifies product-specific validation checks for both S-102 datasets and exchange sets containing S-102 datasets.
 
-The checks specified in this document supplement the checks described in Edition 1.0.0 of S-158:100 (Universal Hydrographic Data Model Validation Checks). Both sets of validation checks, those described in S-158:100 as well as those defined in S-158:102, must be applied to test the validity of S-102 datasets and exchange sets. For datasets and exchange sets intended for use on ECDIS, additional cross-product checks, defined in S-158:98, must also be applied.
+The checks specified in this document supplement the checks described in Edition 1.0.0 of S-158:100 (Universal Hydrographic Data Model Validation Checks). Both sets of validation checks, those described in S-158:100 as well as those defined in {:series:}-{158:102}, must be applied to test the validity of S-102 datasets and exchange sets. For datasets and exchange sets intended for use on ECDIS, additional cross-product checks, defined in S-158:98, must also be applied.
 
 The checks described are intended for production systems designed to produce S-102 datasets. The checks can be administered at any time during the production phase.
 
 === Conformance
 This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks – Introduction and Structure).
 
-The validation checks described herein conform to Edition(s) 3.0.x  of IHO Product Specification S-102 (Bathymetric Surface).
+The validation checks described herein conform to Edition(s) {s102-version-ref} of IHO Product Specification S-102 (Bathymetric Surface).

@@ -13,6 +13,7 @@
 :mn-output-extensions: xml,html,doc,pdf,rxl
 :local-cache-only:
 :status: draft-development
+:s102-version-ref: 3.0.x
 
 include::sections/00-document-history.adoc[]
 include::sections/01-introduction.adoc[]
