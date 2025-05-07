@@ -3,18 +3,196 @@
 == Introduction
 This document specifies a set of checks that producers of S-102 Bathymetric Surface validation tools must implement in their validation software. Validation software is used to ensure that S-102 data are compliant with the S-102 Product Specification. The initial list of checks for S-102 was compiled by the IHO S-102 Project Team of the IHO S-100 Working Group.
 
-The checks listed in this document are product-specific. They supplement but do not replace the generic S-100 validation checks applicable to all S-100 products which are defined in a separate IHO publication (S-158:100 – Universal Hydrographic Model Validation Checks).
+The checks listed in this document are product-specific. They supplement but do not replace the generic S-100 validation checks applicable to all S-100 products which are defined in a separate IHO publication (<<iho-s158-100>>).
 
 === Scope
-This document, designated as “{series}-{docnumber}” by the IHO, specifies validation checks for data products conforming to Edition(s) {s102-version-ref} of the S-102 (Bathymetric Surface) Product Specification.
+This document, designated as “{series}-{docnumber}” by the IHO, specifies validation checks for data products conforming to Edition(s) {s102-version-ref} of the S-102 (Bathymetric Surface) Product Specification (<<iho-s102>>).
 
 This document specifies product-specific validation checks for both S-102 datasets and exchange sets containing S-102 datasets.
 
-The checks specified in this document supplement the checks described in Edition 1.0.0 of S-158:100 (Universal Hydrographic Data Model Validation Checks). Both sets of validation checks, those described in S-158:100 as well as those defined in {series}-{docnumber}, must be applied to test the validity of S-102 datasets and exchange sets. For datasets and exchange sets intended for use on ECDIS, additional cross-product checks, defined in S-158:98, must also be applied.
+The checks specified in this document supplement the checks described in <<iho-s158-100>> (Universal Hydrographic Data Model Validation Checks). Both sets of validation checks, those described in <<iho-s158-100>> as well as those defined in {series}-{docnumber}, must be applied to test the validity of S-102 datasets and exchange sets. For datasets and exchange sets intended for use on ECDIS, additional cross-product checks, defined in <<iho-s158-98>>, must also be applied.
 
 The checks described are intended for production systems designed to produce S-102 datasets. The checks can be administered at any time during the production phase.
 
 === Conformance
-This specification conforms to Edition 1.0.0 of IHO specification S-158 (Validation Checks – Introduction and Structure).
+This specification conforms to <<iho-s158>> (Validation Checks – Introduction and Structure).
 
-The validation checks described herein conform to Edition(s) {s102-version-ref} of IHO Product Specification S-102 (Bathymetric Surface).
+The validation checks described herein conform to Edition(s) {s102-version-ref} of IHO Product Specification <<iho-s102>>.
+
+=== References
+
+[bibliography]
+==== Normative references
+* [[[iho-s98,IHO S-98 2.0.0]]],
+"span:title[_Missing in Relaton_]" (span:date[2025]).
+span:publisher[IHO].
+span:uri[https://www.iho.int]
+* [[[iho-s100,IHO S-100 5.2.0]]]
+* [[[iho-s102,IHO S-102 3.0.0]]],
+"span:title[_Missing in Relaton_]" (span:date[2024]).
+span:publisher[IHO].
+span:uri[https://www.iho.int]
+* [[[iho-s158,IHO S-158 1.0.0]]],
+"span:title[_Missing in Relaton_]" (span:date[2025]).
+span:publisher[IHO].
+span:uri[https://www.iho.int]
+* [[[iho-s158-98,IHO S-158:98 1.0.0]]],
+"span:title[_Missing in Relaton_]" (span:date[2025]).
+span:publisher[IHO].
+span:uri[https://www.iho.int]
+* [[[iho-s158-100,IHO S-158:100 1.0.0]]],
+"span:title[_Missing in Relaton_]" (span:date[2025]).
+span:publisher[IHO].
+span:uri[https://www.iho.int]
+
+[bibliography]
+==== Informative references
+* [[[iso-19101,ISO 19101]]]
+* [[[iso-19103,ISO 19103]]]
+* [[[iso-19107,ISO 19107]]]
+* [[[iso-19157,ISO 19157:2013]]]
+
+=== Terms, definitions and abbreviations
+The terms and definitions listed in <<iho-s158,clause=xxx>> apply to this document. In addition, the following terms and definitions are used:
+
+[[clause-terms-definitions]]
+==== Terms and definitions
+[[term-def-enumeration]]
+===== enumeration
+A fixed list of valid identifiers of named literal values. Attributes of an enumerated type may only take values from this list [???]
+
+[[term-def-exterior]]
+===== exterior
+Difference between the universe and the closure [<<iso-19107>>]
+
+[NOTE]
+The concept of exterior is applicable to both topological and geometric complexes
+
+[[term-def-feature-attribute]]
+===== feature attribute
+Characteristic of a feature [<<iso-19101>>]
+
+[NOTE]
+A feature attribute may occur as a type or an instance. Feature attribute type or feature attribute instance is used when only one is meant.
+
+[NOTE]
+A feature attribute type has a name, a data type and a domain associated to it. A feature attribute instance has an attribute value taken from the value domain of the feature attribute type.
+
+[NOTE]
+In a Feature Catalogue, a feature attribute may include a value domain but does not specify attribute values for feature instances.
+
+[example]
+A feature attribute named communication channel may have an attribute value VHF0007 which belongs to the data type text  
+
+[example]
+A feature attribute named length may have an attribute value 82.4 which belongs to the data type real  
+
+[[term-def-multiplicity]]
+===== multiplicity
+Specification of the number of possible occurrences of a property, or the number of allowable elements that may participate in a given relationship [<<iso-19103>>]
+
+[example]
+1..* (one to many); 1 (exactly one); 0..1 (zero or one)
+
+[[clause-abbreviations]]
+==== Abbreviations
+This Specification uses the abbreviated terms defined in <<iho-s158,clause=xxx>>.	
+
+In addition, this Specification uses the following abbreviated terms:
+
+FDG:: Feature Data Group. The values group specified in <<iho-s100,part=10c>> and represented by Level 3 and Level 4 in <<iho-s102,clause=10.2,figure=10-2>>.
+FIDS:: Feature Information Dataset in “Group_F” - see <<iho-s100,part=10c>>. See <<iho-s102,clause=10.2,figure=10-2;clause=10.2.3>>.
+FINST:: Feature Instance. Instance of BathymetryCoverage in <<iho-s102>>. Represents the BathymetryCoverage.nn groups within the BathymetryCoverage feature type group.
+FTYPE:: Feature Type. Represents the container group BathymetryCoverage in <<iho-s102>>. See Level 1 of <<iho-s102,clause=10.2,figure=10-2>>.
+FTYPE.N:: Feature instance groups. “N” denotes the N-th Feature instance group in the dataset. See Level 2 of <<iho-s102,clause=10.2,figure=10-2>>.
+QINST:: Quality feature instance. Instance of QualityOfBathymetryCoverage in <<iho-s102>>. Represents the BathymetryCoverage.nn groups within the BathymetryCoverage feature type group.
+QTYPE:: Quality Feature Type. Represents the container group for QualityOfBathymetryCoverage in <<iho-s102>>. See Level 1 of <<iho-s102,clause=10.2,figure=10-2>>.
+QTYPE.N:: Instance groups for the quality features. “N” denotes the N-th Quality feature instance group in the dataset. See Level 2 of <<iho-s102,clause=10.2,figure=10-2>>.
+
+[[clause-symbols]]
+==== Symbols
+The symbols used in logical and spatial expressions are defined in <<iho-s158,clause=1.3.3 (Symbols)>> .
+
+[[clause-use-of-language]]
+=== Use of language
+Within this document:
+
+* “Must” indicates a mandatory requirement.
+* “Should” indicates an optional requirement, that is the recommended process to be followed, but is not mandatory.
+* “May” means “allowed to” or “could possibly”, and is not mandatory.
+
+[[clause-general-description]]
+====General description
+{series}-{docnumber} is a specification describing product-specific validation checks for <<iho-s102>> products. There are no data products based directly on this edition of {series}-{docnumber} and therefore no general information applicable to data products conforming to it.
+
+The validation checks are intended for production systems designed to produce <<iho-s102>> datasets. The checks can be administered at any time during the production phase.
+
+[[clause-spec-metadata-maintenance]]
+=== Specification metadata and maintenance
+
+[[clause-spec-metadata]]
+==== Specification metadata
+This information uniquely identifies this Specification and provides information about its creation and maintenance.
+
+*Title*:: {title}
+*Version*:: {edition}
+*Date*:: {published-date}
+*Language*:: English
+*Classification*:: Unclassified
+*Contact*::
++
+--
+International Hydrographic Bureau +
+4 Quai Antoine 1er +
+B.P. 445 +
+MC 98011 MONACO CEDEX +
+Telephone: +377 93 10 81 00 +
+Fax: +377 93 10 81 40 +
+Email: mailto:info@iho.int[] +
+--
+*Role*:: Owner
+*URL*:: link:https://registry.iho.int/[https://registry.iho.int]
+*Identifier*:: {series}-{docnumber}
+*Maintenance*:: Changes to this Specification are coordinated by the IHO S-102 Project Team of the IHO S-100 Working Group and made available via the IHO Publications website. Maintenance of the Product Specification must conform to IHO Technical Resolution 2/2007 (revised 2010). For reporting issues which need correction, use the contact information.
+
+[[clause-spec-maintenance]]
+==== Specification maintenance
+
+[[clause-spec-maintenance-intro]]
+===== Introduction
+Changes to {series}-{docnumber} will be released by the IHO as a New Edition, revision, or clarification.
+
+The list of checks, which accompanies this document is considered part of this Specification and changes to it are considered changes to this Specification.
+
+{series}-{docnumber} is not accompanied by separate artefacts such as an XML Schema, Feature or Portrayal Catalogue and therefore this clause does not address the question of changes to such derived artefacts.
+
+[[clause-spec-maintenance-new-edition]]
+===== New Edition
+_New Editions_ of {series}-{docnumber} introduce significant changes. _New Editions_ enable new concepts, such as the ability to support new functions or applications, the introduction of new constructs or data types, or significant changes to the basic information or check structure arising from a new edition of <<iho-s158>>. _New Editions_ are likely to have a significant impact on either existing users or future users of <<iho-s102>> and {series}-{docnumber}. All cumulative _<<clause-spec-maintenance-revision>>s_ and _<<clause-spec-maintenance-clarification>>s_ must be included with the release of approved New Editions.
+
+[[clause-spec-maintenance-revision]]
+===== Revision
+_Revisions_ are defined as substantive semantic changes to {series}-{docnumber}. Typically, _revisions_ will change {series}-{docnumber} to correct factual errors or introduce necessary changes that have become evident as a result of practical experience or changing circumstances, including support for new revisions of <<iho-s158>>. A _revision_ must not be classified as a _<<clause-spec-maintenance-clarification>>_. _Revisions_ could have an impact on either existing users or future users of {series}-{docnumber}. All cumulative _<<clause-spec-maintenance-clarification>>s_ must be included with the release of approved revisions.
+
+Changes in a revision of {series}-{docnumber} may or may not correspond to the same revision+edition number of <<iho-s102>>.
+
+[[clause-spec-maintenance-clarification]]
+===== Clarification
+_Clarifications_ are changes to {series}-{docnumber} arising from non-substantive reasons or from introduction of a new edition or revision of <<iho-s102>>.
+
+Typically _clarifications_ for non-substantive reasons remove ambiguity; correct grammatical and spelling errors; amend or update cross references; revise check messages or clarify check descriptions; or revise _classifications_ of checks as critical/error/warning. A _clarification_ must not cause any substantive semantic change to {series}-{docnumber}.
+
+_Clarifications_ to {series}-{docnumber} for alignment to a new edition or revision of <<iho-s102>> may update validation checks or add new validation checks. Validation checks for older but still active editions or revisions of <<iho-s102>> will be retained but may be marked as Deleted for the new edition/revision of <<iho-s102>>.
+
+[[clause-spec-maintenance-version-numbers]]
+===== Version numbers
+The associated version control numbering to identify changes (n) to {series}-{docnumber} must be as follows:
+
+<<clause-spec-maintenance-new-edition>>s denoted as *n*.0.0
+
+<<clause-spec-maintenance-revision>>s denoted as n.*n*.0
+
+<<clause-spec-maintenance-clarification>>s denoted as n.n.*n*
+
+
+
