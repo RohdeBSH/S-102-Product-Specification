@@ -23,6 +23,7 @@ Changes to this Specification are coordinated by the IHO S-100 Working Group S-1
 |===
 
 
+[.preface]
 == Summary of Substantive Changes in Edition x.x
 
 Bold references in the Clauses Affected column indicate the principal sections/clauses that are affected by the described change.
